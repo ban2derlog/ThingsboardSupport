@@ -34,8 +34,7 @@ For more information, use the documentation on our website: https://thingsboard.
 CoAP is a light-weight IoT protocol for constrained devices.
 For use this need COAP client to be installed.
 Example: 
-apt-get install npm
-npm install coap-cli -g
+`sudo apt-get install npm && sudo npm install coap-cli -g`
 
 - post       -- type of COAP request
 - coap://    -- address of the host
