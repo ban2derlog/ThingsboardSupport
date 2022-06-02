@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: performance-test
+  namespace: thingsboard
+spec:
+  containers:
+  - name: performance-test
+    image: thingsboard/tb-ce-performance-test:3.3.2-SNAPSHOT
+    imagePullPolicy: Always
+    env:
+      - name: REST_URL
+        value: k8s-thingsbo-tbhttplo-d3c82ad506-161354397.eu-west-3.elb.amazonaws.com:80
+      - name: REST_USERNAME
+        value: tenant@thingsboard.org
+      - name: REST_PASSWORD
+        value: tenant
+      - name: DEVICE_API
+        value: HTTP
+      - name: TEST_API
+        value: device
+      - name: MESSAGES_PER_SECOND
+        value: "3000"
+      - name: DURATION_IN_SECONDS
+        value: "120"
+      - name: TEST_PAYLOAD_TYPE
+        value: SMART_TRACKER
+  restartPolicy: Never
+
+---

@@ -1,0 +1,18 @@
+FROM cassandra:4.0.1
+# FROM bitnami/cassandra:3.11.6
+
+# # Run the Update
+RUN apt-get update -y && apt-get upgrade -y
+
+# # Install pre-reqs
+RUN apt-get install -y python curl s3cmd iputils-ping
+
+RUN curl -sO https://bootstrap.pypa.io/pip/3.4/get-pip.py
+RUN python get-pip.py
+RUN pip install --upgrade pip
+
+COPY ./* /home/root/
+
+RUN chmod 777 /home/root/
+
+ENTRYPOINT ["/bin/bash"]
